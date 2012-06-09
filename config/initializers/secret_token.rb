@@ -1,0 +1,1 @@
+﻿HotCompress::Application.config.secret_token = 'wheninthecourseofhumanevents13579juggernaut08642'

@@ -1,0 +1,6 @@
+﻿=simple_form_for @url_pair do |f|
+	= render 'shared/error_msg', model: @url_pair
+	= f.input :long_url, :as => :string, :label => 'The long url you want to go to:'
+	= f.input :short_url, :as => :string, :label => '   The short url you will enter:'
+	
+	= f.button :submit

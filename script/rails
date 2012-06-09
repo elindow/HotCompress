@@ -1,0 +1,14 @@
+﻿#!/usr/bin/env ruby
+
+#Script/rails
+#------------
+#Script/rails is automatically run when you type `rails`. It loads `config/application.rb` and `config/boot.rb`.
+
+APP_PATH = File.expand_path('../../config/application', __FILE__)
+
+require File.expand_path('../../config/boot', __FILE__)
+
+if defined? 'rails/commands'
+
+require 'rails/commands'
+end

@@ -1,0 +1,171 @@
+Rails Basics
+============
+
+Rails can generate a working rails application in a single command.
+
+    $ rails new hello-world
+
+An application can then be run.
+
+    $ cd hello-world
+    hello-world$ rails s
+
+    => Booting WEBrick
+    => Rails 3.1.0 application starting in development on http://0.0.0.0:3000
+    => Call with -d to detach
+    => Ctrl-C to shutdown server
+    [2011-12-07 16:29:35] INFO  WEBrick 1.3.1
+    [2011-12-07 16:29:35] INFO  ruby 1.9.2 (2011-07-09) [x86_64-darwin11.2.0]
+    [2011-12-07 16:29:35] INFO  WEBrick::HTTPServer#start: pid=20070 port=3000
+
+Navigate to [localhost:3000](http://localhost:3000) to see your rails application.
+
+You can also open a rails console with `rails c`.
+
+That's too easy. Let's build a bare bones Rails application that can serve static pages, first. 
+
+Bundler
+-------
+
+Create a *Gemfile* with the following contents.
+
+``` ruby
+source "http://rubygems.org"
+
+gem "rails", "3.1"
+```
+
+Install gems.
+
+    $ bundle install
+    Your bundle is complete! Use `bundle show [gemname]` to see where a bundled gem is installed.
+
+    $ rails --version
+    Rails 3.1.0
+
+Boot
+----
+
+In *config/boot.rb* we just need to setup bundler to load our gems.
+
+``` ruby
+# require rubygems that knows how to load gems
+require 'rubygems'
+
+# require bundler, which in turn will load all the gems
+require 'bundler/setup'
+```
+
+Application
+-----------
+
+An application is declared in *config/application.rb*.
+
+``` ruby
+# load libraries required on boot
+require File.expand_path('../boot', __FILE__)
+
+# the action controller that serves requests
+require "action_controller/railtie"
+
+# libraries required for the application to run
+# include :default and current environment libraries
+Bundler.require :default, Rails.env
+
+# application itself
+module HelloWorld
+  class Application < Rails::Application
+    # Configure the default encoding used in templates for Ruby 1.9.
+    config.encoding = "utf-8"
+  end
+end
+```
+
+Environment
+-----------
+
+Initialize the application with all its environment options in *config/environment.rb*.
+
+``` ruby
+require File.expand_path('../application', __FILE__)
+
+HelloWorld::Application.initialize!
+```
+
+Config.ru
+---------
+
+Rails uses Rack as the basis for its HTTP handling.
+
+Config.ru is a convention by which we indicate how to run a Rack-based application. This is also called to *rack-up* an application.
+
+``` ruby
+require ::File.expand_path('../config/environment',  __FILE__)
+
+run HelloWorld::Application
+```
+
+A call to `File.expand_path('../config/environment',  __FILE__)` evaluates to an absolute path to `config/environment`. This enables running Rails applications from any location.
+
+Script/rails
+------------
+
+Script/rails is automatically run when you type `rails`. It loads `config/application.rb` and `config/boot.rb`.
+
+``` ruby
+#!/usr/bin/env ruby
+
+APP_PATH = File.expand_path('../../config/application',  __FILE__)
+
+require File.expand_path('../../config/boot',  __FILE__)
+require 'rails/commands'
+```
+
+Cryptographic Token
+-------------------
+
+A secret token is required to encrypt session data. Add *config/initializers/secret_token.rb*.
+
+``` ruby
+HelloWorld::Application.config.secret_token = "why did the chicken cross the road?"
+```
+
+Static HTML Page
+----------------
+
+Add *public/index.html* with some basic HTML content.
+
+Run the Application
+-------------------
+
+    $ rails s
+
+Navigate to http://localhost:3000 to display the contents of index.html.
+
+Load Sequence
+-------------
+
+    $ rails s
+
+    Loading script/rails
+    Loading config/boot.rb
+    Loading rails/commands
+    Loading application.rb
+    => Booting WEBrick
+    => Rails 3.1.0 application starting in development on http://0.0.0.0:3000
+    => Call with -d to detach
+    => Ctrl-C to shutdown server
+    Loading config.ru
+    Loading config/environment.rb
+    HelloWorld::Application.initialize!
+    Loading config/routes.rb
+    Running HelloWorld::Application
+    [2011-12-07 17:24:35] INFO  WEBrick 1.3.1
+    [2011-12-07 17:24:35] INFO  ruby 1.9.2 (2011-07-09) [x86_64-darwin11.2.0]
+    [2011-12-07 17:24:35] INFO  WEBrick::HTTPServer#start: pid=20322 port=3000
+
+Next
+====
+
+Lets look at a [Rails MVC application](4.2-rails-mvc-scaffold.md).
+

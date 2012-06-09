@@ -1,0 +1,9 @@
+%h2 #{@url_pair.short_url} #{@url_pair.long_url}
+
+%ul
+	%li= "Long Url: #{@url_pair.long_url}"
+	%li= "Short Url: #{@url_pair.short_url}"
+	
+= link_to 'Edit', edit_url_pair_path(@url_pair)
+|
+= link_to 'Back', url_pairs_path
