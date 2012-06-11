@@ -7664,3 +7664,318 @@ Served asset /application.js - 304 Not Modified (1ms)
 
 Started GET "/y" for 127.0.0.1 at 2012-06-08 22:16:04 -0400
   [1m[35mUrlPair Load (1.0ms)[0m  SELECT "url_pairs".* FROM "url_pairs" WHERE "url_pairs"."short_url" = 'y' LIMIT 1
+
+
+Started GET "/url_pairs" for 127.0.0.1 at 2012-06-09 09:29:35 -0400
+Processing by UrlPairsController#index as HTML
+  [1m[36mUrlPair Load (1.0ms)[0m  [1mSELECT "url_pairs".* FROM "url_pairs" [0m
+  [1m[35m (0.0ms)[0m  SELECT COUNT(*) FROM "url_pairs" 
+  Rendered url_pairs/index.html.haml within layouts/application (16.0ms)
+Completed 200 OK in 25ms (Views: 22.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at 2012-06-09 09:29:35 -0400
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js" for 127.0.0.1 at 2012-06-09 09:29:35 -0400
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/sign_in" for 127.0.0.1 at 2012-06-09 09:33:19 -0400
+  [1m[36mUrlPair Load (0.0ms)[0m  [1mSELECT "url_pairs".* FROM "url_pairs" WHERE "url_pairs"."short_url" = 'sign_in' LIMIT 1[0m
+
+NoMethodError (undefined method `long_url' for nil:NilClass):
+  config/routes.rb:68:in `block (2 levels) in <top (required)>'
+
+
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2012-06-09 09:33:57 -0400
+Processing by Devise::SessionsController#new as HTML
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 12 LIMIT 1
+  [1m[36m (0.0ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.0ms)[0m  COMMIT
+Completed 401 Unauthorized in 23ms
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2012-06-09 09:33:57 -0400
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.erb (13.0ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (20.0ms)
+Completed 200 OK in 25ms (Views: 25.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at 2012-06-09 09:33:57 -0400
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js" for 127.0.0.1 at 2012-06-09 09:33:58 -0400
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2012-06-09 09:34:11 -0400
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"YeYA3B55f94R8k0WgAqOTRXO7pHNMNTYDesVNaOq1LU=", "user"=>{"email"=>"elindow@verizon.net", "password"=>"2expect5", "remember_me"=>"0"}, "commit"=>"Sign in"}
+  [1m[36mUser Load (1.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."email" = 'elindow@verizon.net' LIMIT 1[0m
+  [1m[35m (0.0ms)[0m  BEGIN
+  [1m[36m (0.0ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.0ms)[0m  BEGIN
+  [1m[36m (0.0ms)[0m  [1mUPDATE "users" SET "last_sign_in_at" = '2012-06-08 16:43:56.941850', "current_sign_in_at" = '2012-06-09 13:34:11.494979', "sign_in_count" = 4, "updated_at" = '2012-06-09 13:34:11.494979' WHERE "users"."id" = 12[0m
+  [1m[35m (1.0ms)[0m  COMMIT
+Redirected to http://localhost:3000/users/sign_in
+Completed 302 Found in 98ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2012-06-09 09:34:11 -0400
+Processing by Devise::SessionsController#new as HTML
+  [1m[36mUser Load (1.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 12 LIMIT 1[0m
+Redirected to http://localhost:3000/
+Filter chain halted as :require_no_authentication rendered or redirected
+Completed 302 Found in 1ms (ActiveRecord: 1.0ms)
+
+
+Started GET "/url_pairs/7" for 127.0.0.1 at 2012-06-09 09:35:45 -0400
+Processing by UrlPairsController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[35mUrlPair Load (0.0ms)[0m  SELECT "url_pairs".* FROM "url_pairs" WHERE "url_pairs"."id" = $1 LIMIT 1  [["id", "7"]]
+  Rendered url_pairs/show.html.haml within layouts/application (2.0ms)
+Completed 200 OK in 11ms (Views: 10.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.js" for 127.0.0.1 at 2012-06-09 09:35:45 -0400
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at 2012-06-09 09:35:45 -0400
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/url_pairs" for 127.0.0.1 at 2012-06-09 09:35:47 -0400
+Processing by UrlPairsController#index as HTML
+  [1m[36mUrlPair Load (1.0ms)[0m  [1mSELECT "url_pairs".* FROM "url_pairs" [0m
+  [1m[35m (0.0ms)[0m  SELECT COUNT(*) FROM "url_pairs" 
+  Rendered url_pairs/index.html.haml within layouts/application (7.0ms)
+Completed 200 OK in 16ms (Views: 14.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at 2012-06-09 09:35:47 -0400
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js" for 127.0.0.1 at 2012-06-09 09:35:47 -0400
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2012-06-09 09:49:19 -0400
+Processing by Devise::SessionsController#new as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 12 LIMIT 1[0m
+Redirected to http://localhost:3000/
+Filter chain halted as :require_no_authentication rendered or redirected
+Completed 302 Found in 3ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2012-06-10 23:55:06 -0400
+Processing by Devise::SessionsController#new as HTML
+  [1m[35mUser Load (1.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 12 LIMIT 1
+  [1m[36m (1.0ms)[0m  [1mBEGIN[0m
+  [1m[35m (1.0ms)[0m  COMMIT
+Completed 401 Unauthorized in 5ms
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2012-06-10 23:55:06 -0400
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.erb (1.0ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (9.0ms)
+Completed 200 OK in 16ms (Views: 16.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at 2012-06-10 23:55:06 -0400
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js" for 127.0.0.1 at 2012-06-10 23:55:07 -0400
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2012-06-10 23:55:18 -0400
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"YeYA3B55f94R8k0WgAqOTRXO7pHNMNTYDesVNaOq1LU=", "user"=>{"email"=>"elindow@verizon.net", "password"=>"2expect5", "remember_me"=>"0"}, "commit"=>"Sign in"}
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."email" = 'elindow@verizon.net' LIMIT 1[0m
+  [1m[35m (0.0ms)[0m  BEGIN
+  [1m[36m (0.0ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.0ms)[0m  BEGIN
+  [1m[36m (1.0ms)[0m  [1mUPDATE "users" SET "last_sign_in_at" = '2012-06-09 13:34:11.494979', "current_sign_in_at" = '2012-06-11 03:55:18.806564', "sign_in_count" = 5, "updated_at" = '2012-06-11 03:55:18.806564' WHERE "users"."id" = 12[0m
+  [1m[35m (7.0ms)[0m  COMMIT
+Redirected to http://localhost:3000/users/sign_in
+Completed 302 Found in 104ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2012-06-10 23:55:18 -0400
+Processing by Devise::SessionsController#new as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 12 LIMIT 1[0m
+Redirected to http://localhost:3000/
+Filter chain halted as :require_no_authentication rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/url_pair/index" for 127.0.0.1 at 2012-06-10 23:55:36 -0400
+  [1m[35mUrlPair Load (1.0ms)[0m  SELECT "url_pairs".* FROM "url_pairs" WHERE "url_pairs"."short_url" = 'url_pair/index' LIMIT 1
+
+NoMethodError (undefined method `long_url' for nil:NilClass):
+  config/routes.rb:68:in `block (2 levels) in <top (required)>'
+
+
+
+
+Started GET "/url_pairs" for 127.0.0.1 at 2012-06-10 23:55:44 -0400
+Processing by UrlPairsController#index as HTML
+  [1m[36mUrlPair Load (0.0ms)[0m  [1mSELECT "url_pairs".* FROM "url_pairs" [0m
+  [1m[35m (1.0ms)[0m  SELECT COUNT(*) FROM "url_pairs" 
+  Rendered url_pairs/index.html.haml within layouts/application (7.0ms)
+Completed 200 OK in 18ms (Views: 15.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at 2012-06-10 23:55:44 -0400
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js" for 127.0.0.1 at 2012-06-10 23:55:44 -0400
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/url_pairs/new" for 127.0.0.1 at 2012-06-10 23:56:16 -0400
+Processing by UrlPairsController#new as HTML
+  Rendered shared/_error_msg.html.haml (0.0ms)
+  Rendered url_pairs/_form.html.haml (10.0ms)
+  Rendered url_pairs/new.html.haml within layouts/application (13.0ms)
+Completed 200 OK in 23ms (Views: 22.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at 2012-06-10 23:56:16 -0400
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js" for 127.0.0.1 at 2012-06-10 23:56:16 -0400
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started POST "/url_pairs" for 127.0.0.1 at 2012-06-10 23:56:43 -0400
+Processing by UrlPairsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"YeYA3B55f94R8k0WgAqOTRXO7pHNMNTYDesVNaOq1LU=", "url_pair"=>{"long_url"=>"http:\\\\www.heroku.com", "short_url"=>"h"}, "commit"=>"Create Url pair"}
+  [1m[36m (0.0ms)[0m  [1mBEGIN[0m
+  [1m[35mUrlPair Exists (1.0ms)[0m  SELECT 1 FROM "url_pairs" WHERE "url_pairs"."short_url" = 'h' LIMIT 1
+  [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO "url_pairs" ("created_at", "long_url", "short_url", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["created_at", Mon, 11 Jun 2012 03:56:43 UTC +00:00], ["long_url", "http:\\\\www.heroku.com"], ["short_url", "h"], ["updated_at", Mon, 11 Jun 2012 03:56:43 UTC +00:00], ["user_id", nil]]
+  [1m[35m (1.0ms)[0m  COMMIT
+Redirected to http://localhost:3000/url_pairs/8
+Completed 302 Found in 7ms (ActiveRecord: 3.0ms)
+
+
+Started GET "/url_pairs/8" for 127.0.0.1 at 2012-06-10 23:56:43 -0400
+Processing by UrlPairsController#show as HTML
+  Parameters: {"id"=>"8"}
+  [1m[36mUrlPair Load (1.0ms)[0m  [1mSELECT "url_pairs".* FROM "url_pairs" WHERE "url_pairs"."id" = $1 LIMIT 1[0m  [["id", "8"]]
+  Rendered url_pairs/show.html.haml within layouts/application (1.0ms)
+Completed 200 OK in 11ms (Views: 10.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at 2012-06-10 23:56:44 -0400
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js" for 127.0.0.1 at 2012-06-10 23:56:44 -0400
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/url_pairs" for 127.0.0.1 at 2012-06-10 23:56:46 -0400
+Processing by UrlPairsController#index as HTML
+  [1m[35mUrlPair Load (1.0ms)[0m  SELECT "url_pairs".* FROM "url_pairs" 
+  [1m[36m (0.0ms)[0m  [1mSELECT COUNT(*) FROM "url_pairs" [0m
+  Rendered url_pairs/index.html.haml within layouts/application (8.0ms)
+Completed 200 OK in 16ms (Views: 15.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at 2012-06-10 23:56:46 -0400
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js" for 127.0.0.1 at 2012-06-10 23:56:46 -0400
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/hitter/" for 127.0.0.1 at 2012-06-10 23:56:56 -0400
+  [1m[35mUrlPair Load (1.0ms)[0m  SELECT "url_pairs".* FROM "url_pairs" WHERE "url_pairs"."short_url" = 'hitter' LIMIT 1
+
+NoMethodError (undefined method `long_url' for nil:NilClass):
+  config/routes.rb:68:in `block (2 levels) in <top (required)>'
+
+
+
+
+Started GET "/hitter" for 127.0.0.1 at 2012-06-10 23:57:02 -0400
+  [1m[36mUrlPair Load (1.0ms)[0m  [1mSELECT "url_pairs".* FROM "url_pairs" WHERE "url_pairs"."short_url" = 'hitter' LIMIT 1[0m
+
+NoMethodError (undefined method `long_url' for nil:NilClass):
+  config/routes.rb:68:in `block (2 levels) in <top (required)>'
+
+
+
+
+Started GET "/h" for 127.0.0.1 at 2012-06-10 23:57:04 -0400
+  [1m[35mUrlPair Load (1.0ms)[0m  SELECT "url_pairs".* FROM "url_pairs" WHERE "url_pairs"."short_url" = 'h' LIMIT 1
+
+URI::InvalidURIError (bad URI(is not URI?): http:\\www.heroku.com):
+  C:/RailsInstaller/Ruby1.9.3/lib/ruby/1.9.1/uri/common.rb:176:in `split'
+  C:/RailsInstaller/Ruby1.9.3/lib/ruby/1.9.1/uri/common.rb:211:in `parse'
+  C:/RailsInstaller/Ruby1.9.3/lib/ruby/1.9.1/uri/common.rb:747:in `parse'
+  actionpack (3.2.3) lib/action_dispatch/routing/redirection.rb:16:in `call'
+  journey (1.0.3) lib/journey/router.rb:68:in `block in call'
+  journey (1.0.3) lib/journey/router.rb:56:in `each'
+  journey (1.0.3) lib/journey/router.rb:56:in `call'
+  actionpack (3.2.3) lib/action_dispatch/routing/route_set.rb:600:in `call'
+  warden (1.1.1) lib/warden/manager.rb:35:in `block in call'
+  warden (1.1.1) lib/warden/manager.rb:34:in `catch'
+  warden (1.1.1) lib/warden/manager.rb:34:in `call'
+  actionpack (3.2.3) lib/action_dispatch/middleware/best_standards_support.rb:17:in `call'
+  rack (1.4.1) lib/rack/etag.rb:23:in `call'
+  rack (1.4.1) lib/rack/conditionalget.rb:25:in `call'
+  actionpack (3.2.3) lib/action_dispatch/middleware/head.rb:14:in `call'
+  actionpack (3.2.3) lib/action_dispatch/middleware/params_parser.rb:21:in `call'
+  actionpack (3.2.3) lib/action_dispatch/middleware/flash.rb:242:in `call'
+  rack (1.4.1) lib/rack/session/abstract/id.rb:205:in `context'
+  rack (1.4.1) lib/rack/session/abstract/id.rb:200:in `call'
+  actionpack (3.2.3) lib/action_dispatch/middleware/cookies.rb:338:in `call'
+  activerecord (3.2.3) lib/active_record/query_cache.rb:64:in `call'
+  activerecord (3.2.3) lib/active_record/connection_adapters/abstract/connection_pool.rb:467:in `call'
+  actionpack (3.2.3) lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+  activesupport (3.2.3) lib/active_support/callbacks.rb:405:in `_run__539010813__call__1029653320__callbacks'
+  activesupport (3.2.3) lib/active_support/callbacks.rb:405:in `__run_callback'
+  activesupport (3.2.3) lib/active_support/callbacks.rb:385:in `_run_call_callbacks'
+  activesupport (3.2.3) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (3.2.3) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (3.2.3) lib/action_dispatch/middleware/reloader.rb:65:in `call'
+  actionpack (3.2.3) lib/action_dispatch/middleware/remote_ip.rb:31:in `call'
+  actionpack (3.2.3) lib/action_dispatch/middleware/debug_exceptions.rb:16:in `call'
+  actionpack (3.2.3) lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  railties (3.2.3) lib/rails/rack/logger.rb:26:in `call_app'
+  railties (3.2.3) lib/rails/rack/logger.rb:16:in `call'
+  actionpack (3.2.3) lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  rack (1.4.1) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.4.1) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.2.3) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.4.1) lib/rack/lock.rb:15:in `call'
+  actionpack (3.2.3) lib/action_dispatch/middleware/static.rb:62:in `call'
+  railties (3.2.3) lib/rails/engine.rb:479:in `call'
+  railties (3.2.3) lib/rails/application.rb:220:in `call'
+  rack (1.4.1) lib/rack/content_length.rb:14:in `call'
+  railties (3.2.3) lib/rails/rack/log_tailer.rb:14:in `call'
+  rack (1.4.1) lib/rack/handler/webrick.rb:59:in `service'
+  C:/RailsInstaller/Ruby1.9.3/lib/ruby/1.9.1/webrick/httpserver.rb:138:in `service'
+  C:/RailsInstaller/Ruby1.9.3/lib/ruby/1.9.1/webrick/httpserver.rb:94:in `run'
+  C:/RailsInstaller/Ruby1.9.3/lib/ruby/1.9.1/webrick/server.rb:191:in `block in start_thread'
+
+
+
+
+Started GET "/y" for 127.0.0.1 at 2012-06-10 23:57:15 -0400
+  [1m[36mUrlPair Load (0.0ms)[0m  [1mSELECT "url_pairs".* FROM "url_pairs" WHERE "url_pairs"."short_url" = 'y' LIMIT 1[0m
