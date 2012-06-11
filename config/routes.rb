@@ -4,7 +4,7 @@ resources :url_pairs
 	
   devise_for :users
 
-  root :to => "home#index"
+  root :to => "url_pairs#index"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

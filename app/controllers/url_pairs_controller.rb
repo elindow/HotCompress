@@ -1,6 +1,13 @@
 class UrlPairsController < ApplicationController
   def index
 	@url_pairs = UrlPair.find(:all)
+	current_or_guest_user
+	if guest_user
+		puts "Logged in as guest"
+		puts guest_user.email
+	else
+		puts "Logged in as #{current_user.email}"
+	end
   end
 
   def show
