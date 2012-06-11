@@ -2,9 +2,9 @@ HotCompress::Application.routes.draw do
 
 resources :url_pairs
 	
-  devise_for :users
+devise_for :users
 
-  root :to => "url_pairs#index"
+root :to => "url_pairs#index"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
@@ -64,7 +64,7 @@ resources :url_pairs
   # match ':controller(/:action(/:id))(.:format)'
   
   match '*a', :to => redirect {|params, r| 
-	puts params[:a]
+	#add counters here 
 	UrlPair.find_by_short_url(params[:a]).long_url.to_s 
 	}
 end
