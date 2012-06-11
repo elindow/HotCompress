@@ -7979,3 +7979,26 @@ URI::InvalidURIError (bad URI(is not URI?): http:\\www.heroku.com):
 
 Started GET "/y" for 127.0.0.1 at 2012-06-10 23:57:15 -0400
   [1m[36mUrlPair Load (0.0ms)[0m  [1mSELECT "url_pairs".* FROM "url_pairs" WHERE "url_pairs"."short_url" = 'y' LIMIT 1[0m
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2012-06-11 01:22:46 -0400
+Processing by Devise::SessionsController#new as HTML
+  [1m[35mUser Load (1.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 12 LIMIT 1
+  [1m[36m (0.0ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.0ms)[0m  COMMIT
+Completed 401 Unauthorized in 4ms
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2012-06-11 01:22:46 -0400
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.erb (1.0ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (14.0ms)
+Completed 200 OK in 25ms (Views: 24.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at 2012-06-11 01:22:46 -0400
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js" for 127.0.0.1 at 2012-06-11 01:22:46 -0400
+Served asset /application.js - 304 Not Modified (0ms)

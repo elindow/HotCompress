@@ -9,7 +9,7 @@ gem 'devise'
 #gem 'therubyracer'
 #gem 'twitter-bootstrap-rails'
 gem 'heroku'
-
+gem "rspec-core"
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -60,3 +60,4 @@ group :test do
 	gem "selenium-webdriver"
 	gem 'hirb'
 end
+
