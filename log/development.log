@@ -11550,3 +11550,374 @@ NoMethodError (undefined method `destroy' for nil:NilClass):
   app/controllers/url_pairs_controller.rb:44:in `destroy'
 
 
+  [1m[36m (67.0ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" character varying(255) NOT NULL) [0m
+  [1m[35m (39.0ms)[0m   SELECT distinct i.relname, d.indisunique, d.indkey, pg_get_indexdef(d.indexrelid), t.oid
+ FROM pg_class t
+ INNER JOIN pg_index d ON t.oid = d.indrelid
+ INNER JOIN pg_class i ON d.indexrelid = i.oid
+ WHERE i.relkind = 'i'
+ AND d.indisprimary = 'f'
+ AND t.relname = 'schema_migrations'
+ AND i.relnamespace IN (SELECT oid FROM pg_namespace WHERE nspname = ANY (current_schemas(false)) )
+ ORDER BY i.relname
+
+  [1m[36m (6.0ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35m (1.0ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations" 
+Migrating to DeviseCreateUsers (20120607195135)
+  [1m[36m (0.0ms)[0m  [1mBEGIN[0m
+  [1m[35m (63.0ms)[0m  CREATE TABLE "users" ("id" serial primary key, "email" character varying(255) DEFAULT '' NOT NULL, "encrypted_password" character varying(255) DEFAULT '' NOT NULL, "reset_password_token" character varying(255), "reset_password_sent_at" timestamp, "remember_created_at" timestamp, "sign_in_count" integer DEFAULT 0, "current_sign_in_at" timestamp, "last_sign_in_at" timestamp, "current_sign_in_ip" character varying(255), "last_sign_in_ip" character varying(255), "confirmation_token" character varying(255), "confirmed_at" timestamp, "confirmation_sent_at" timestamp, "unconfirmed_email" character varying(255), "failed_attempts" integer DEFAULT 0, "unlock_token" character varying(255), "locked_at" timestamp, "authentication_token" character varying(255), "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) 
+  [1m[36m (1.0ms)[0m  [1m SELECT distinct i.relname, d.indisunique, d.indkey, pg_get_indexdef(d.indexrelid), t.oid
+ FROM pg_class t
+ INNER JOIN pg_index d ON t.oid = d.indrelid
+ INNER JOIN pg_class i ON d.indexrelid = i.oid
+ WHERE i.relkind = 'i'
+ AND d.indisprimary = 'f'
+ AND t.relname = 'users'
+ AND i.relnamespace IN (SELECT oid FROM pg_namespace WHERE nspname = ANY (current_schemas(false)) )
+ ORDER BY i.relname
+[0m
+  [1m[35m (3.0ms)[0m  CREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")
+  [1m[36m (1.0ms)[0m  [1m SELECT distinct i.relname, d.indisunique, d.indkey, pg_get_indexdef(d.indexrelid), t.oid
+ FROM pg_class t
+ INNER JOIN pg_index d ON t.oid = d.indrelid
+ INNER JOIN pg_class i ON d.indexrelid = i.oid
+ WHERE i.relkind = 'i'
+ AND d.indisprimary = 'f'
+ AND t.relname = 'users'
+ AND i.relnamespace IN (SELECT oid FROM pg_namespace WHERE nspname = ANY (current_schemas(false)) )
+ ORDER BY i.relname
+[0m
+  [1m[35mColumns for index index_users_on_email on users (1.0ms)[0m   SELECT a.attnum, a.attname
+ FROM pg_attribute a
+ WHERE a.attrelid = 47778
+ AND a.attnum IN (2)
+
+  [1m[36m (2.0ms)[0m  [1mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")[0m
+  [1m[35m (1.0ms)[0m   SELECT distinct i.relname, d.indisunique, d.indkey, pg_get_indexdef(d.indexrelid), t.oid
+ FROM pg_class t
+ INNER JOIN pg_index d ON t.oid = d.indrelid
+ INNER JOIN pg_class i ON d.indexrelid = i.oid
+ WHERE i.relkind = 'i'
+ AND d.indisprimary = 'f'
+ AND t.relname = 'users'
+ AND i.relnamespace IN (SELECT oid FROM pg_namespace WHERE nspname = ANY (current_schemas(false)) )
+ ORDER BY i.relname
+
+  [1m[36mColumns for index index_users_on_email on users (0.0ms)[0m  [1m SELECT a.attnum, a.attname
+ FROM pg_attribute a
+ WHERE a.attrelid = 47778
+ AND a.attnum IN (2)
+[0m
+  [1m[35mColumns for index index_users_on_reset_password_token on users (0.0ms)[0m   SELECT a.attnum, a.attname
+ FROM pg_attribute a
+ WHERE a.attrelid = 47778
+ AND a.attnum IN (4)
+
+  [1m[36m (24.0ms)[0m  [1mCREATE UNIQUE INDEX "index_users_on_confirmation_token" ON "users" ("confirmation_token")[0m
+  [1m[35m (1.0ms)[0m   SELECT distinct i.relname, d.indisunique, d.indkey, pg_get_indexdef(d.indexrelid), t.oid
+ FROM pg_class t
+ INNER JOIN pg_index d ON t.oid = d.indrelid
+ INNER JOIN pg_class i ON d.indexrelid = i.oid
+ WHERE i.relkind = 'i'
+ AND d.indisprimary = 'f'
+ AND t.relname = 'users'
+ AND i.relnamespace IN (SELECT oid FROM pg_namespace WHERE nspname = ANY (current_schemas(false)) )
+ ORDER BY i.relname
+
+  [1m[36mColumns for index index_users_on_confirmation_token on users (0.0ms)[0m  [1m SELECT a.attnum, a.attname
+ FROM pg_attribute a
+ WHERE a.attrelid = 47778
+ AND a.attnum IN (12)
+[0m
+  [1m[35mColumns for index index_users_on_email on users (0.0ms)[0m   SELECT a.attnum, a.attname
+ FROM pg_attribute a
+ WHERE a.attrelid = 47778
+ AND a.attnum IN (2)
+
+  [1m[36mColumns for index index_users_on_reset_password_token on users (0.0ms)[0m  [1m SELECT a.attnum, a.attname
+ FROM pg_attribute a
+ WHERE a.attrelid = 47778
+ AND a.attnum IN (4)
+[0m
+  [1m[35m (3.0ms)[0m  CREATE UNIQUE INDEX "index_users_on_unlock_token" ON "users" ("unlock_token")
+  [1m[36m (1.0ms)[0m  [1m SELECT distinct i.relname, d.indisunique, d.indkey, pg_get_indexdef(d.indexrelid), t.oid
+ FROM pg_class t
+ INNER JOIN pg_index d ON t.oid = d.indrelid
+ INNER JOIN pg_class i ON d.indexrelid = i.oid
+ WHERE i.relkind = 'i'
+ AND d.indisprimary = 'f'
+ AND t.relname = 'users'
+ AND i.relnamespace IN (SELECT oid FROM pg_namespace WHERE nspname = ANY (current_schemas(false)) )
+ ORDER BY i.relname
+[0m
+  [1m[35mColumns for index index_users_on_confirmation_token on users (0.0ms)[0m   SELECT a.attnum, a.attname
+ FROM pg_attribute a
+ WHERE a.attrelid = 47778
+ AND a.attnum IN (12)
+
+  [1m[36mColumns for index index_users_on_email on users (0.0ms)[0m  [1m SELECT a.attnum, a.attname
+ FROM pg_attribute a
+ WHERE a.attrelid = 47778
+ AND a.attnum IN (2)
+[0m
+  [1m[35mColumns for index index_users_on_reset_password_token on users (0.0ms)[0m   SELECT a.attnum, a.attname
+ FROM pg_attribute a
+ WHERE a.attrelid = 47778
+ AND a.attnum IN (4)
+
+  [1m[36mColumns for index index_users_on_unlock_token on users (0.0ms)[0m  [1m SELECT a.attnum, a.attname
+ FROM pg_attribute a
+ WHERE a.attrelid = 47778
+ AND a.attnum IN (17)
+[0m
+  [1m[35m (3.0ms)[0m  CREATE UNIQUE INDEX "index_users_on_authentication_token" ON "users" ("authentication_token")
+  [1m[36m (2.0ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20120607195135')[0m
+  [1m[35m (3.0ms)[0m  COMMIT
+Migrating to CreateUrlPairs (20120608022655)
+  [1m[36m (20.0ms)[0m  [1mBEGIN[0m
+  [1m[35m (49.0ms)[0m  CREATE TABLE "url_pairs" ("id" serial primary key, "long_url" character varying(255), "short_url" character varying(255), "user_id" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) 
+  [1m[36m (1.0ms)[0m  [1m SELECT distinct i.relname, d.indisunique, d.indkey, pg_get_indexdef(d.indexrelid), t.oid
+ FROM pg_class t
+ INNER JOIN pg_index d ON t.oid = d.indrelid
+ INNER JOIN pg_class i ON d.indexrelid = i.oid
+ WHERE i.relkind = 'i'
+ AND d.indisprimary = 'f'
+ AND t.relname = 'url_pairs'
+ AND i.relnamespace IN (SELECT oid FROM pg_namespace WHERE nspname = ANY (current_schemas(false)) )
+ ORDER BY i.relname
+[0m
+  [1m[35m (3.0ms)[0m  CREATE UNIQUE INDEX "index_url_pairs_on_short_url" ON "url_pairs" ("short_url")
+  [1m[36m (0.0ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20120608022655')[0m
+  [1m[35m (2.0ms)[0m  COMMIT
+  [1m[36m (1.0ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+  [1m[35mPK and serial sequence (41.0ms)[0m   SELECT attr.attname, seq.relname
+ FROM pg_class seq,
+ pg_attribute attr,
+ pg_depend dep,
+ pg_namespace name,
+ pg_constraint cons
+ WHERE seq.oid = dep.objid
+ AND seq.relkind = 'S'
+ AND attr.attrelid = dep.refobjid
+ AND attr.attnum = dep.refobjsubid
+ AND attr.attrelid = cons.conrelid
+ AND attr.attnum = cons.conkey[1]
+ AND cons.contype = 'p'
+ AND dep.refobjid = '"url_pairs"'::regclass
+
+  [1m[36m (3.0ms)[0m  [1m SELECT distinct i.relname, d.indisunique, d.indkey, pg_get_indexdef(d.indexrelid), t.oid
+ FROM pg_class t
+ INNER JOIN pg_index d ON t.oid = d.indrelid
+ INNER JOIN pg_class i ON d.indexrelid = i.oid
+ WHERE i.relkind = 'i'
+ AND d.indisprimary = 'f'
+ AND t.relname = 'url_pairs'
+ AND i.relnamespace IN (SELECT oid FROM pg_namespace WHERE nspname = ANY (current_schemas(false)) )
+ ORDER BY i.relname
+[0m
+  [1m[35mColumns for index index_url_pairs_on_short_url on url_pairs (1.0ms)[0m   SELECT a.attnum, a.attname
+ FROM pg_attribute a
+ WHERE a.attrelid = 47798
+ AND a.attnum IN (3)
+
+  [1m[36mPK and serial sequence (2.0ms)[0m  [1m SELECT attr.attname, seq.relname
+ FROM pg_class seq,
+ pg_attribute attr,
+ pg_depend dep,
+ pg_namespace name,
+ pg_constraint cons
+ WHERE seq.oid = dep.objid
+ AND seq.relkind = 'S'
+ AND attr.attrelid = dep.refobjid
+ AND attr.attnum = dep.refobjsubid
+ AND attr.attrelid = cons.conrelid
+ AND attr.attnum = cons.conkey[1]
+ AND cons.contype = 'p'
+ AND dep.refobjid = '"users"'::regclass
+[0m
+  [1m[35m (1.0ms)[0m   SELECT distinct i.relname, d.indisunique, d.indkey, pg_get_indexdef(d.indexrelid), t.oid
+ FROM pg_class t
+ INNER JOIN pg_index d ON t.oid = d.indrelid
+ INNER JOIN pg_class i ON d.indexrelid = i.oid
+ WHERE i.relkind = 'i'
+ AND d.indisprimary = 'f'
+ AND t.relname = 'users'
+ AND i.relnamespace IN (SELECT oid FROM pg_namespace WHERE nspname = ANY (current_schemas(false)) )
+ ORDER BY i.relname
+
+  [1m[36mColumns for index index_users_on_authentication_token on users (1.0ms)[0m  [1m SELECT a.attnum, a.attname
+ FROM pg_attribute a
+ WHERE a.attrelid = 47778
+ AND a.attnum IN (19)
+[0m
+  [1m[35mColumns for index index_users_on_confirmation_token on users (0.0ms)[0m   SELECT a.attnum, a.attname
+ FROM pg_attribute a
+ WHERE a.attrelid = 47778
+ AND a.attnum IN (12)
+
+  [1m[36mColumns for index index_users_on_email on users (1.0ms)[0m  [1m SELECT a.attnum, a.attname
+ FROM pg_attribute a
+ WHERE a.attrelid = 47778
+ AND a.attnum IN (2)
+[0m
+  [1m[35mColumns for index index_users_on_reset_password_token on users (0.0ms)[0m   SELECT a.attnum, a.attname
+ FROM pg_attribute a
+ WHERE a.attrelid = 47778
+ AND a.attnum IN (4)
+
+  [1m[36mColumns for index index_users_on_unlock_token on users (1.0ms)[0m  [1m SELECT a.attnum, a.attname
+ FROM pg_attribute a
+ WHERE a.attrelid = 47778
+ AND a.attnum IN (17)
+[0m
+  [1m[36m (1.0ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+  [1m[35m (318.0ms)[0m  DROP DATABASE IF EXISTS "hot-compress-test"
+  [1m[36m (2870.2ms)[0m  [1mCREATE DATABASE "hot-compress-test" ENCODING = 'utf8'[0m
+  [1m[35m (95.0ms)[0m  CREATE TABLE "url_pairs" ("id" serial primary key, "long_url" character varying(255), "short_url" character varying(255), "user_id" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) 
+  [1m[36m (20.0ms)[0m  [1m SELECT distinct i.relname, d.indisunique, d.indkey, pg_get_indexdef(d.indexrelid), t.oid
+ FROM pg_class t
+ INNER JOIN pg_index d ON t.oid = d.indrelid
+ INNER JOIN pg_class i ON d.indexrelid = i.oid
+ WHERE i.relkind = 'i'
+ AND d.indisprimary = 'f'
+ AND t.relname = 'url_pairs'
+ AND i.relnamespace IN (SELECT oid FROM pg_namespace WHERE nspname = ANY (current_schemas(false)) )
+ ORDER BY i.relname
+[0m
+  [1m[35m (27.0ms)[0m  CREATE UNIQUE INDEX "index_url_pairs_on_short_url" ON "url_pairs" ("short_url")
+  [1m[36m (27.0ms)[0m  [1mCREATE TABLE "users" ("id" serial primary key, "email" character varying(255) DEFAULT '' NOT NULL, "encrypted_password" character varying(255) DEFAULT '' NOT NULL, "reset_password_token" character varying(255), "reset_password_sent_at" timestamp, "remember_created_at" timestamp, "sign_in_count" integer DEFAULT 0, "current_sign_in_at" timestamp, "last_sign_in_at" timestamp, "current_sign_in_ip" character varying(255), "last_sign_in_ip" character varying(255), "confirmation_token" character varying(255), "confirmed_at" timestamp, "confirmation_sent_at" timestamp, "unconfirmed_email" character varying(255), "failed_attempts" integer DEFAULT 0, "unlock_token" character varying(255), "locked_at" timestamp, "authentication_token" character varying(255), "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) [0m
+  [1m[35m (2.0ms)[0m   SELECT distinct i.relname, d.indisunique, d.indkey, pg_get_indexdef(d.indexrelid), t.oid
+ FROM pg_class t
+ INNER JOIN pg_index d ON t.oid = d.indrelid
+ INNER JOIN pg_class i ON d.indexrelid = i.oid
+ WHERE i.relkind = 'i'
+ AND d.indisprimary = 'f'
+ AND t.relname = 'users'
+ AND i.relnamespace IN (SELECT oid FROM pg_namespace WHERE nspname = ANY (current_schemas(false)) )
+ ORDER BY i.relname
+
+  [1m[36m (13.0ms)[0m  [1mCREATE UNIQUE INDEX "index_users_on_authentication_token" ON "users" ("authentication_token")[0m
+  [1m[35m (1.0ms)[0m   SELECT distinct i.relname, d.indisunique, d.indkey, pg_get_indexdef(d.indexrelid), t.oid
+ FROM pg_class t
+ INNER JOIN pg_index d ON t.oid = d.indrelid
+ INNER JOIN pg_class i ON d.indexrelid = i.oid
+ WHERE i.relkind = 'i'
+ AND d.indisprimary = 'f'
+ AND t.relname = 'users'
+ AND i.relnamespace IN (SELECT oid FROM pg_namespace WHERE nspname = ANY (current_schemas(false)) )
+ ORDER BY i.relname
+
+  [1m[36mColumns for index index_users_on_authentication_token on users (1.0ms)[0m  [1m SELECT a.attnum, a.attname
+ FROM pg_attribute a
+ WHERE a.attrelid = 47823
+ AND a.attnum IN (19)
+[0m
+  [1m[35m (3.0ms)[0m  CREATE UNIQUE INDEX "index_users_on_confirmation_token" ON "users" ("confirmation_token")
+  [1m[36m (1.0ms)[0m  [1m SELECT distinct i.relname, d.indisunique, d.indkey, pg_get_indexdef(d.indexrelid), t.oid
+ FROM pg_class t
+ INNER JOIN pg_index d ON t.oid = d.indrelid
+ INNER JOIN pg_class i ON d.indexrelid = i.oid
+ WHERE i.relkind = 'i'
+ AND d.indisprimary = 'f'
+ AND t.relname = 'users'
+ AND i.relnamespace IN (SELECT oid FROM pg_namespace WHERE nspname = ANY (current_schemas(false)) )
+ ORDER BY i.relname
+[0m
+  [1m[35mColumns for index index_users_on_authentication_token on users (1.0ms)[0m   SELECT a.attnum, a.attname
+ FROM pg_attribute a
+ WHERE a.attrelid = 47823
+ AND a.attnum IN (19)
+
+  [1m[36mColumns for index index_users_on_confirmation_token on users (0.0ms)[0m  [1m SELECT a.attnum, a.attname
+ FROM pg_attribute a
+ WHERE a.attrelid = 47823
+ AND a.attnum IN (12)
+[0m
+  [1m[35m (9.0ms)[0m  CREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")
+  [1m[36m (1.0ms)[0m  [1m SELECT distinct i.relname, d.indisunique, d.indkey, pg_get_indexdef(d.indexrelid), t.oid
+ FROM pg_class t
+ INNER JOIN pg_index d ON t.oid = d.indrelid
+ INNER JOIN pg_class i ON d.indexrelid = i.oid
+ WHERE i.relkind = 'i'
+ AND d.indisprimary = 'f'
+ AND t.relname = 'users'
+ AND i.relnamespace IN (SELECT oid FROM pg_namespace WHERE nspname = ANY (current_schemas(false)) )
+ ORDER BY i.relname
+[0m
+  [1m[35mColumns for index index_users_on_authentication_token on users (1.0ms)[0m   SELECT a.attnum, a.attname
+ FROM pg_attribute a
+ WHERE a.attrelid = 47823
+ AND a.attnum IN (19)
+
+  [1m[36mColumns for index index_users_on_confirmation_token on users (0.0ms)[0m  [1m SELECT a.attnum, a.attname
+ FROM pg_attribute a
+ WHERE a.attrelid = 47823
+ AND a.attnum IN (12)
+[0m
+  [1m[35mColumns for index index_users_on_email on users (0.0ms)[0m   SELECT a.attnum, a.attname
+ FROM pg_attribute a
+ WHERE a.attrelid = 47823
+ AND a.attnum IN (2)
+
+  [1m[36m (4.0ms)[0m  [1mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")[0m
+  [1m[35m (1.0ms)[0m   SELECT distinct i.relname, d.indisunique, d.indkey, pg_get_indexdef(d.indexrelid), t.oid
+ FROM pg_class t
+ INNER JOIN pg_index d ON t.oid = d.indrelid
+ INNER JOIN pg_class i ON d.indexrelid = i.oid
+ WHERE i.relkind = 'i'
+ AND d.indisprimary = 'f'
+ AND t.relname = 'users'
+ AND i.relnamespace IN (SELECT oid FROM pg_namespace WHERE nspname = ANY (current_schemas(false)) )
+ ORDER BY i.relname
+
+  [1m[36mColumns for index index_users_on_authentication_token on users (1.0ms)[0m  [1m SELECT a.attnum, a.attname
+ FROM pg_attribute a
+ WHERE a.attrelid = 47823
+ AND a.attnum IN (19)
+[0m
+  [1m[35mColumns for index index_users_on_confirmation_token on users (0.0ms)[0m   SELECT a.attnum, a.attname
+ FROM pg_attribute a
+ WHERE a.attrelid = 47823
+ AND a.attnum IN (12)
+
+  [1m[36mColumns for index index_users_on_email on users (0.0ms)[0m  [1m SELECT a.attnum, a.attname
+ FROM pg_attribute a
+ WHERE a.attrelid = 47823
+ AND a.attnum IN (2)
+[0m
+  [1m[35mColumns for index index_users_on_reset_password_token on users (1.0ms)[0m   SELECT a.attnum, a.attname
+ FROM pg_attribute a
+ WHERE a.attrelid = 47823
+ AND a.attnum IN (4)
+
+  [1m[36m (3.0ms)[0m  [1mCREATE UNIQUE INDEX "index_users_on_unlock_token" ON "users" ("unlock_token")[0m
+  [1m[35m (3.0ms)[0m  CREATE TABLE "schema_migrations" ("version" character varying(255) NOT NULL) 
+  [1m[36m (1.0ms)[0m  [1m SELECT distinct i.relname, d.indisunique, d.indkey, pg_get_indexdef(d.indexrelid), t.oid
+ FROM pg_class t
+ INNER JOIN pg_index d ON t.oid = d.indrelid
+ INNER JOIN pg_class i ON d.indexrelid = i.oid
+ WHERE i.relkind = 'i'
+ AND d.indisprimary = 'f'
+ AND t.relname = 'schema_migrations'
+ AND i.relnamespace IN (SELECT oid FROM pg_namespace WHERE nspname = ANY (current_schemas(false)) )
+ ORDER BY i.relname
+[0m
+  [1m[35m (4.0ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36m (1.0ms)[0m  [1mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (1.0ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20120608022655')
+  [1m[36m (2.0ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20120607195135')[0m
+  [1m[36m (0.0ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+  [1m[35m (5000.3ms)[0m  DROP DATABASE IF EXISTS "hot-compress-test"
+PG::Error: ERROR:  database "hot-compress-test" is being accessed by other users
+DETAIL:  There are 2 other session(s) using the database.
+: DROP DATABASE IF EXISTS "hot-compress-test"
+  [1m[36m (1.0ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+  [1m[35m (5001.3ms)[0m  DROP DATABASE IF EXISTS "hot-compress-test"
+PG::Error: ERROR:  database "hot-compress-test" is being accessed by other users
+DETAIL:  There are 2 other session(s) using the database.
+: DROP DATABASE IF EXISTS "hot-compress-test"
+  [1m[36m (46.8ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+  [1m[35m (5460.0ms)[0m  DROP DATABASE IF EXISTS "hot-compress-test"
+PG::Error: ERROR:  database "hot-compress-test" is being accessed by other users
+DETAIL:  There are 2 other session(s) using the database.
+: DROP DATABASE IF EXISTS "hot-compress-test"
