@@ -1,0 +1,23 @@
+﻿Mongo
+
+threaded
+dynamic tables
+padded columns
+stored procedures
+cache
+queue
+joins on warmup
+huge schema
+orm madness
+
+CAP triangle
+-consistency - the data looks the same to all clients
+-availability - each client can read/write at any time
+-partition tolerance - system works through distribution issues - i.e. loss of servers/connections/etc
+
+Have to pick two of the above for a distributed system
+
+Star schema - expensive
+
+
+
