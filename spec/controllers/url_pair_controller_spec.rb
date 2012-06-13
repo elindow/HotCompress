@@ -1,9 +1,12 @@
 require 'spec_helper'
 
-describe UrlPairController do
+describe UrlPairsController do
 
   describe "GET 'index'" do
-    it "returns http success" do
+   it "returns http success" do	
+	  @up = Fabricate(:url_pair)
+	  @up.save!
+	  @url_pairs = UrlPair.find(:all)
       get 'index'
       response.should be_success
     end

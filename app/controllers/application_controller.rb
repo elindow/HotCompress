@@ -10,7 +10,7 @@
 		if current_user
 			if session[:guest_user_id]
 				logging_in
-				guest_user.destroy
+				#guest_user.destroy
 				session[:guest_user_id] = nil
 			end
 			@current_user = current_user
@@ -22,7 +22,12 @@
 	# find guest_user object associated with the current session,
 	# creating one as needed
 	def guest_user
-		User.find(session[:guest_user_id].nil? ? session[:guest_user_id] = create_guest_user.id : session[:guest_user_id])
+		guest_user = User.find_by_email("guest@e.com")
+		if ( guest_user.nil? )
+			create_guest_user
+		end
+		guest_user
+		#User.find(session[:guest_user_id].nil? ? session[:guest_user_id] = create_guest_user.id : session[:guest_user_id])
 	end
 	
 	private
@@ -39,7 +44,10 @@
 	end
 	
 	def create_guest_user
-		u = User.create(:name => "guest", :email => "guest_#{Time.now.to_i}#{rand(99)}@example.com")
+		puts "attempting to create guest user"
+		u = User.create(:name => "guest", :email => "guest@e.com")
+		#u = User.create(:name => "guest", :email => "guest_#{Time.now.to_i}#{rand(99)}@example.com")
+		u.skip_confirmation!
 		u.save(:validate => false)
 		u
 	end

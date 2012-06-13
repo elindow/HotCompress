@@ -41,7 +41,8 @@ class UrlPairsController < ApplicationController
   end
 
   def destroy
-		@url_pair.destroy
-		redirect_to url_pairs_url
+	@url_pair = UrlPair.find(params[:id])
+	@url_pair.destroy
+	redirect_to url_pairs_url
   end
 end
