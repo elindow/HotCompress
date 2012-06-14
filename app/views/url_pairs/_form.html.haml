@@ -2,5 +2,6 @@
 	= render 'shared/error_msg', model: @url_pair
 	= f.input :long_url, :as => :string, :label => 'The long url you want to go to:'
 	= f.input :short_url, :as => :string, :label => '   The short url you will enter:'
+	= "Owner: #{User.find_by_id(@id).email}"
 	
 	= f.button :submit

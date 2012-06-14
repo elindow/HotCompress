@@ -5,10 +5,12 @@
 	%tr
 		%th= "Long URL "
 		%th= "Short URL" 
+		%th= "Owner"
 	-	@url_pairs.each do |url_pair|
 		%tr
 			%td= url_pair.long_url
 			%td= url_pair.short_url
+			%td= User.find_by_id(url_pair.user_id).email
 			%td= link_to 'Test', url_pair.long_url
 			%td= link_to 'Show', url_pair_path(url_pair)
 			%td= link_to 'Edit', edit_url_pair_path(url_pair)

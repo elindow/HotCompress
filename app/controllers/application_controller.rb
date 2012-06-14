@@ -10,10 +10,11 @@
 		if current_user
 			if session[:guest_user_id]
 				logging_in
-				#guest_user.destroy
+				guest_user.destroy
 				session[:guest_user_id] = nil
 			end
 			@current_user = current_user
+			@guest_user = nil
 		else
 			@guest_user = guest_user
 		end
