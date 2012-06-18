@@ -3,7 +3,7 @@
 %ul
 	%li= "Long Url: #{@url_pair.long_url}"
 	%li= "Short Url: #{@url_pair.short_url}"
-	%li= "Owner: #{User.find_by_id(@url_pair.user_id).email}"
+	%li= "Owner: #{@url_pair.user.email}"
 	
 = link_to 'Edit', edit_url_pair_path(@url_pair)
 |

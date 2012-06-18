@@ -64,8 +64,13 @@ root :to => "url_pairs#index"
   # match ':controller(/:action(/:id))(.:format)'
   
   match '*a', :to => redirect {|params, r| 
+	u = UrlPair.find_by_short_url(params[:a])
 	#add counters here 
-	UrlPair.find_by_short_url(params[:a]).long_url.to_s 
+	u.hit_count += 1
+	u.save
+	
+	u.long_url.to_s 
+	
 	}
 end
  

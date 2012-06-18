@@ -1,0 +1,6 @@
+﻿=simple_form_for @options do |f|
+	= #render 'shared/error_msg', model: @url_pairs
+	= #f.association :user, :as => :radio_buttons, :label => 'Choose the owner:'
+	= #f.input :short_url, :as => :string, :label => '   The short url you will enter:'
+	
+	= f.button :submit

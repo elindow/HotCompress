@@ -3,7 +3,11 @@ def id
 	if @guest_user
 		@id = guest_user.id
 	else
-		@id = current_user.id
+		if current_user.nil?
+			@id = User.find_by_email("guest@e.com")
+		else 
+			@id = current_user.id
+		end
 	end
 end
 
@@ -36,6 +40,7 @@ end
 	id
 	@url_pair = UrlPair.new(params[:url_pair])
 	@url_pair.user_id = @id
+	@url_pair.hit_count = 0
 	if @url_pair.save
 		redirect_to @url_pair, notice: "Url pair was successfully created" 
 	else
@@ -44,15 +49,21 @@ end
   end 
   
   def edit
+	id
 	@url_pair = UrlPair.find(params[:id])
   end
 
   def update
 	@url_pair = UrlPair.find(params[:id])
+	id
+	@url_pair.user_id = @id
+	if @url_pair.hit_count.nil? || @url_pair.hit_count <= 0
+		@url_pair.hit_count = 0
+	end
 	if @url_pair.update_attributes(params[:url_pair])
 		redirect_to(@url_pair, :notice => "Url pair was successfully updated")
 	else
-		render action "edit"
+		render "edit"
 	end
   end
 

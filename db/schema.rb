@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120608022655) do
+ActiveRecord::Schema.define(:version => 20120618032131) do
 
   create_table "url_pairs", :force => true do |t|
     t.string   "long_url"
@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(:version => 20120608022655) do
     t.integer  "user_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.integer  "hit_count"
   end
 
   add_index "url_pairs", ["short_url"], :name => "index_url_pairs_on_short_url", :unique => true

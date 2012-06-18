@@ -4,8 +4,8 @@ class UrlPair < ActiveRecord::Base
   validates_presence_of :short_url
   validates_uniqueness_of :short_url
   validates_presence_of :long_url
-  #validates_presence_of :user_id
-
+  validates_presence_of :user_id
+  validates_presence_of :hit_count
   
-  belongs_to :User
+  belongs_to :user
 end
