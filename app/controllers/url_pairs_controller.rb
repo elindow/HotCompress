@@ -12,9 +12,10 @@ def id
 end
 
  def index
-	@url_pairs = UrlPair.find(:all)
+	#@url_pairs = UrlPair.find(:all)
 	current_or_guest_user
 	id
+	@url_pairs = User.find_by_id(@id).url_pairs.all
 	if guest_user
 		puts "Logged in as guest"
 		puts guest_user.email
