@@ -33,7 +33,6 @@ end
   def new
     id
 	@url_pair = UrlPair.new
-	#@url_pair.user_id = @id
   end
 
   def create

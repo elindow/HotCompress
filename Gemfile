@@ -43,6 +43,7 @@ gem 'jquery-rails'
 group :development do
 	gem "rspec-rails"
 	gem 'hirb'
+	gem "fabrication"
 end
 
 group :test do
