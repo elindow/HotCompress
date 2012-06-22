@@ -23,6 +23,7 @@
 %br			
 = link_to "New Url Pair", new_url_pair_path
 %br
+= high_chart("my_id", @h)
 %br
 - if @guest_user
 	Logged in as guest, id=#{@guest_user.id}
@@ -30,3 +31,4 @@
 - else
 	Logged in as #{current_user.email}, id=#{current_user.id}
 	= link_to 'End Session', destroy_user_session_path, :confirm => "Are you sure?", :method => :delete
+	

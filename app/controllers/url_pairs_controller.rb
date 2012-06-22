@@ -23,6 +23,13 @@ end
 	else
 		puts "Logged in as #{current_user.email}"
 	end
+	
+	@h = LazyHighCharts::HighChart.new('graph') do |f|
+	f.options[:chart][:defaultSeriesType] = "area"
+	f.series(:name=>'Public', :data=>@url_pairs.each do |u| u.hit_count end )
+	#f.series(:name=>'Private', :data=> [1, 3, 4, 3, 3, 5, 4,-46,7,8,8,9,9,0,0,9] )
+	end
+	
   end
 
   def show
@@ -72,12 +79,5 @@ end
 	@url_pair.destroy
 	redirect_to url_pairs_url
   end
-  
-  @h = LazyHighCharts::HighChart.new('graph') do |f|
-  f.options[:chart][:defaultSeriesType] = "area"
-  f.series(:name=>'John', :data=>[3, 20, 3, 5, 4, 10, 12 ,3, 5,6,7,7,80,9,9])
-  f.series(:name=>'Jane', :data=> [1, 3, 4, 3, 3, 5, 4,-46,7,8,8,9,9,0,0,9] )
-  
-end
   
 end
