@@ -4,7 +4,6 @@ describe UrlPairsController do
   describe "GET 'index'" do
 		@user = Fabricate(:user)
 		@up = Fabricate(:url_pair, :user_id => @user.id)		
-		#@up.user = @user
 		@url_pairs = UrlPair.find(:all)
 		it "returns http success" do	
 			get 'index'
@@ -16,7 +15,7 @@ describe UrlPairsController do
   	@user = Fabricate(:user)
 	@url_pair = Fabricate(:url_pair, :user_id => @user.id )
     it "returns http success" do
-      get 'show\url_pair.id'
+      get 'show'
       response.should be_success
     end
   end
@@ -30,9 +29,10 @@ describe UrlPairsController do
 
   describe "GET 'edit'" do
 	before(:each) do
-		@user = Fabricate(:user)
-		@url_pair = Fabricate(:url_pair)
-		@url_pair << @user
+		#user = Fabricate(:user)
+		url_pair = Fabricate(:url_pair)
+		url_pair.user = @user
+		puts "url_pair #{url_pair.id}"
 	end	    
 	it "returns http success" do
       get 'edit'
