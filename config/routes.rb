@@ -1,8 +1,11 @@
 HotCompress::Application.routes.draw do
-
-resources :url_pairs
 	
 devise_for :users
+
+resources :url_pairs
+
+match 'url_pairs_list_all' => 'url_pairs#list_all'
+match 'url_pairs_graph' => 'url_pairs#graph'
 
 root :to => "url_pairs#index"
 
