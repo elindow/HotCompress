@@ -27,7 +27,7 @@
 %br
 %br
 - if @guest_user
-	Logged in as Guest, id=#{@guest_user.id}
+	Using this site as Guest, id=#{@guest_user.id}
 	=  link_to 'Login', new_user_session_path
 - else
 	Logged in as #{current_user.name}, id=#{current_user.id}
