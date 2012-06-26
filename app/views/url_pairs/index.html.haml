@@ -2,7 +2,7 @@
 
 = #render 'form1'
 
-="#{User.find_by_id(@id).email}'s URL Pair Count: #{@url_pairs.count}"
+="#{User.find_by_id(@uid).name}'s URL Pair Count: #{@url_pairs.count}"
 
 %table
 	%tr
@@ -13,24 +13,23 @@
 	-	@url_pairs.each do |url_pair|
 		%tr
 			%td= url_pair.long_url
-			%td= url_pair.short_url
-			%td= url_pair.user.email
+			%td= link_to "#{url_pair.short_url}", url_pair.short_url
+			%td= url_pair.user.name
 			%td= url_pair.hit_count
-			%td= link_to 'Test', url_pair.long_url
+			%td= #link_to 'Test', url_pair.short_url
 			%td= link_to 'Show', url_pair_path(url_pair)
 			%td= link_to 'Edit', edit_url_pair_path(url_pair)
 			%td= link_to 'Destroy', url_pair, :confirm => "Are you sure?", :method => :delete
 %br			
 = link_to "New Url Pair", new_url_pair_path
-- if @guest_user.nil?
-	= link_to "List All", url_pairs_list_all_path
+= link_to "List All", url_pairs_list_all_path
 = link_to "Graph", url_pairs_graph_path
 %br
 %br
 - if @guest_user
-	Logged in as guest, id=#{@guest_user.id}
+	Logged in as Guest, id=#{@guest_user.id}
 	=  link_to 'Login', new_user_session_path
 - else
-	Logged in as #{current_user.email}, id=#{current_user.id}
+	Logged in as #{current_user.name}, id=#{current_user.id}
 	= link_to 'End Session', destroy_user_session_path, :confirm => "Are you sure?", :method => :delete
-	
+	= link_to 'Edit Profile', edit_user_registration_path

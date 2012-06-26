@@ -8,11 +8,11 @@ For example, Bit.ly will shorten https://github.com/generalassembly/ga-ruby-on-r
 Done	1. An anonymous user should be able to shorten a URL by entering it on the site. 
 			Using this URL redirects the browser to the destination URL. 
 
-part		2. Users can register and shorten URLs. Registered users can see all the URLs they have shortened.
+Done		2. Users can register and shorten URLs. Registered users can see all the URLs they have shortened.
 
-part	3. Users can see a page with the number of times someone has used their short URLs, most popular URL first. 
+Done	3. Users can see a page with the number of times someone has used their short URLs, most popular URL first. 
 
-todo	4. The site has a public page with the number of times someone has used any of the short URLs, most popular URL first.
+Done	4. The site has a public page with the number of times someone has used any of the short URLs, most popular URL first.
 
 		5. The implementation must be Ruby on Rails, be committed to Github and the service has to run on Heroku. 
 
@@ -20,6 +20,12 @@ db is at: dblock@dblock.org
 dimitri is at: dimroc@gmail.com; 
 
 Current todos:
-1) Limit display on main list page to logged in user only (plus public/guest entries)
-2) Generate a random value if desired
-3) Public page with number of hits, sorted by popularity
+1) Limit display on main list page to logged in user only (plus public/guest entries) - done
+2) Generate a random value if desired 
+3) Public page with number of hits, sorted by popularity - done
+4) Twitter bootstrap
+5) prepopulate long_url with http://
+6) generate unique random short_url if desired
+7) change 'test' to hit via short_url
+8) destroy ends session if logged in
+

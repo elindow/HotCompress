@@ -14,13 +14,13 @@
 				session[:guest_user_id] = nil
 			end
 			@current_user = current_user
-			@id = current_user.id
+			@uid = current_user.id
 			@guest_user = nil
 		else
 			@guest_user = guest_user
-			@id = guest_user.id		
+			@uid = guest_user.id		
 		end
-		puts "user id is #{@id}"
+		puts "user id is #{@uid}"
 	end
 	
 	# find guest_user object associated with the current session,
