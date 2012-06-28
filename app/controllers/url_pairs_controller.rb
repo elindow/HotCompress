@@ -75,9 +75,7 @@ class UrlPairsController < ApplicationController
 
 	def destroy
 		@url_pair = UrlPair.find(params[:id])
-		@url_pair.destroy
-		current_or_guest_user
-		puts @uid
+		@url_pair.delete
 		redirect_to url_pairs_url
 	end
 	

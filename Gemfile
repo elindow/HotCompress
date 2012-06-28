@@ -7,7 +7,7 @@ gem 'haml-rails'
 gem 'jquery-rails'
 gem 'devise'
 #gem 'therubyracer'
-#gem 'twitter-bootstrap-rails'
+gem 'bootstrap-sass'
 gem 'heroku'
 gem "rspec-core"
 gem "lazy_high_charts"

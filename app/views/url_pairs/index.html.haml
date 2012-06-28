@@ -1,8 +1,15 @@
 %h2 Listing of Url Pairs
 
 = #render 'form1'
+- if @guest_user
+	Using this site as Guest, id=#{@guest_user.id}
+	= #link_to 'Login', new_user_session_path
+- else
+	Logged in as #{current_user.name}, id=#{current_user.id}
+	= #link_to 'End Session', destroy_user_session_path, :confirm => "Are you sure?", :method => :delete
+	= #link_to 'Edit Profile', edit_user_registration_path
 
-="#{User.find_by_id(@uid).name}'s URL Pair Count: #{@url_pairs.count}"
+=" - #{User.find_by_id(@uid).name}'s URL Pair Count: #{@url_pairs.count}"
 
 %table
 	%tr
@@ -21,15 +28,5 @@
 			%td= link_to 'Edit', edit_url_pair_path(url_pair)
 			%td= link_to 'Destroy', url_pair, :confirm => "Are you sure?", :method => :delete
 %br			
-= link_to "New Url Pair", new_url_pair_path
-= link_to "List All", url_pairs_list_all_path
-= link_to "Graph", url_pairs_graph_path
-%br
-%br
-- if @guest_user
-	Using this site as Guest, id=#{@guest_user.id}
-	=  link_to 'Login', new_user_session_path
-- else
-	Logged in as #{current_user.name}, id=#{current_user.id}
-	= link_to 'End Session', destroy_user_session_path, :confirm => "Are you sure?", :method => :delete
-	= link_to 'Edit Profile', edit_user_registration_path
+= link_to "Create New Url Pair", new_url_pair_path
+

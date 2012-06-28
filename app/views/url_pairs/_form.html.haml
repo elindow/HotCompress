@@ -1,6 +1,6 @@
-﻿=simple_form_for @url_pair do |f|
+﻿=simple_form_for @url_pair, :html => {:class => 'form-vertical'} do |f|
 	= render 'shared/error_msg', model: @url_pair
-	= f.input :long_url, :as => :string, :label => 'The long url you want to go to:'
+	= f.input :long_url, :as => :string, :label => 'The long url you want to go to:', :label_html => { :class => nil }
 	= f.input :short_url, :as => :string, :label => '   The short url you will enter:'
 	= "Owner: #{User.find_by_id(@uid).name}"
 	= f.button :submit
