@@ -1,6 +1,7 @@
-﻿=simple_form_for @options do |f|
-	= #render 'shared/error_msg', model: @url_pairs
-	= #f.association :user, :as => :radio_buttons, :label => 'Choose the owner:'
-	= #f.input :short_url, :as => :string, :label => '   The short url you will enter:'
-	
-	= f.button :submit
+﻿- if @guest_user
+	Using this site as Guest, id=#{@guest_user.id}
+	= #link_to 'Login', new_user_session_path
+- else
+	Logged in as #{current_user.name}, id=#{current_user.id}
+	= #link_to 'End Session', destroy_user_session_path, :confirm => "Are you sure?", :method => :delete
+	= #link_to 'Edit Profile', edit_user_registration_path

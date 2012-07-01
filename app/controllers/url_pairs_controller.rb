@@ -1,5 +1,16 @@
 class UrlPairsController < ApplicationController
 
+before_filter :get_url_pair, :only => [ :edit, :show, :update, :destroy ]
+	def get_url_pair
+		begin
+			@url_pair = UrlPair.find(params[:id]) 
+		rescue
+			not_found
+		end
+		uid
+	end
+
+
 	def uid
 		if @guest_user
 			@uid = guest_user.id
@@ -27,8 +38,8 @@ class UrlPairsController < ApplicationController
 	end
 
 	def show
-		uid
-		@url_pair = UrlPair.find(params[:id])
+		#uid
+		#@url_pair = UrlPair.find(params[:id])
 	end
 
 	def new
@@ -55,13 +66,13 @@ class UrlPairsController < ApplicationController
 	end 
   
 	def edit
-		uid
-		@url_pair = UrlPair.find(params[:id])
+		#uid
+		#@url_pair = UrlPair.find(params[:id])
 	end
 
 	def update
-		@url_pair = UrlPair.find(params[:id])
-		uid
+		#@url_pair = UrlPair.find(params[:id])
+		#uid
 		@url_pair.user_id = @uid
 		if @url_pair.hit_count.nil? || @url_pair.hit_count <= 0
 			@url_pair.hit_count = 0
@@ -74,7 +85,7 @@ class UrlPairsController < ApplicationController
 	end
 
 	def destroy
-		@url_pair = UrlPair.find(params[:id])
+		#@url_pair = UrlPair.find(params[:id])
 		@url_pair.delete
 		redirect_to url_pairs_url
 	end
@@ -88,14 +99,8 @@ class UrlPairsController < ApplicationController
   
 	def graph
 		current_or_guest_user
-		#@url_pairs = User.find_by_id(@id).url_pairs.all
 		@url_pairs = UrlPair.find(:all, :order => 'hit_count DESC')
-		if @uid != guest_user.id
-			@urlp = @url_pairs.map do |u| u.hit_count end
-			#@urlg = User.find_by_id(guest_user.id).url_pairs.all.map do |ug| ug.hit_count end
-		else
-			@urlp = @url_pairs.map do |u| u.hit_count end
-		end	
+		@urlp = @url_pairs.map do |u| u.hit_count end
 		@h = LazyHighCharts::HighChart.new('graph') do |f|
 			f.options[:chart][:defaultSeriesType] = "bar"
 			f.options[:title][:text] = "Url Pair Hit Counts"
@@ -103,8 +108,7 @@ class UrlPairsController < ApplicationController
 			#f.tooltip[:formatter][:function] = "Short Url is @{this.x}"
 			@urlc = @url_pairs.map do |u| "#{u.long_url} : #{u.short_url}" end
 			f.xAxis(:categories=>@urlc)
-			f.series(:name=>'All Pairs', :data=>@urlp )
-			#f.series(:name=>'Private', :data=>@urlp )
+			f.series(:name=>'URL Pairs', :data=>@urlp )
 		end
 	end
 end

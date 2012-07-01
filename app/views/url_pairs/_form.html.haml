@@ -3,4 +3,4 @@
 	= f.input :long_url, :as => :string, :label => 'The long url you want to go to:', :label_html => { :class => nil }
 	= f.input :short_url, :as => :string, :label => '   The short url you will enter:'
 	= "Owner: #{User.find_by_id(@uid).name}"
-	= f.button :submit
+	= f.button :submit, :class => "btn primary", :class => 'btn btn-custom'

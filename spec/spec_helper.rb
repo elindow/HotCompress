@@ -1,7 +1,7 @@
 require 'rubygems'
-require 'spork'
+#require 'spork'
 
-Spork.prefork do
+#Spork.prefork do
 
 	ENV["RAILS_ENV"] ||= 'test'
 
@@ -13,8 +13,11 @@ Spork.prefork do
 	require 'capybara/rails'
 
 	RSpec.configure do |config|
+		config.use_transactional_fixtures = false
 		config.mock_with :rspec
 		config.expect_with :rspec
+		config.before(:each) {DatabaseCleaner.start}
+		config.after(:each) {DatabaseCleaner.clean}
 		config.after(:all) do
 			p "All tests finished"
 		end
@@ -27,12 +30,12 @@ Spork.prefork do
 	end
 #end
 
-Spork.each_run do
-	[ "support/config/*.rb", "support/*.rb" ].each do |path|
-		Dir["#{File.dirname(__FILE__)}/#{path}"].each do |file|
-			require file
-		end
-	end
-end
+#Spork.each_run do
+#	[ "support/config/*.rb", "support/*.rb" ].each do |path|
+#		Dir["#{File.dirname(__FILE__)}/#{path}"].each do |file|
+#			require file
+#		end
+#	end
+#end
 
-end
+#end

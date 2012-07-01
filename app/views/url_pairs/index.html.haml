@@ -1,13 +1,6 @@
 %h2 Listing of Url Pairs
 
-= #render 'form1'
-- if @guest_user
-	Using this site as Guest, id=#{@guest_user.id}
-	= #link_to 'Login', new_user_session_path
-- else
-	Logged in as #{current_user.name}, id=#{current_user.id}
-	= #link_to 'End Session', destroy_user_session_path, :confirm => "Are you sure?", :method => :delete
-	= #link_to 'Edit Profile', edit_user_registration_path
+= render 'form1'
 
 =" - #{User.find_by_id(@uid).name}'s URL Pair Count: #{@url_pairs.count}"
 
@@ -24,9 +17,9 @@
 			%td= url_pair.user.name
 			%td= url_pair.hit_count
 			%td= #link_to 'Test', url_pair.short_url
-			%td= link_to 'Show', url_pair_path(url_pair)
-			%td= link_to 'Edit', edit_url_pair_path(url_pair)
-			%td= link_to 'Destroy', url_pair, :confirm => "Are you sure?", :method => :delete
+			%td= link_to 'Show', url_pair_path(url_pair), :class => 'btn btn-mini'
+			%td= link_to 'Edit', edit_url_pair_path(url_pair), {:class => 'btn btn-mini'} 
+			%td= link_to 'Destroy', url_pair, :confirm => "Are you sure?", :method => :delete, :class => 'btn btn-mini'
 %br			
-= link_to "Create New Url Pair", new_url_pair_path
+= link_to "Create New Url Pair", new_url_pair_path, :class => 'btn btn-custom'
 

@@ -1,13 +1,8 @@
 %h2 Url Pairs Graph
+= render 'form1'
+=" -  URL Pair Count: #{UrlPair.count}"	
 
-="URL Pair Count: #{UrlPair.count}"	
-= link_to "Back", url_pairs_path
-%br
-- if @guest_user
-	Logged in as guest, id=#{@guest_user.id}
-	=  link_to 'Login', new_user_session_path
-- else
-	Logged in as #{current_user.email}, id=#{current_user.id}
-	= link_to 'End Session', destroy_user_session_path, :confirm => "Are you sure?", :method => :delete
-%br
 = high_chart("Url Pairs", @h)
+
+%br
+= link_to "Back", url_pairs_path, :class => 'btn btn-mini'

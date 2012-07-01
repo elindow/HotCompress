@@ -21,11 +21,11 @@ dimitri is at: dimroc@gmail.com;
 
 Current todos:
 1) Limit display on main list page to logged in user only (plus public/guest entries) - done
-2) Generate a random value if desired 
+2) Generate a random value if desired == done
 3) Public page with number of hits, sorted by popularity - done
-4) Twitter bootstrap
-5) prepopulate long_url with http://
-6) generate unique random short_url if desired
-7) change 'test' to hit via short_url
-8) destroy ends session if logged in
+4) Twitter bootstrap -- done
+5) prepopulate long_url with http:// -- done
+6) generate unique random short_url if desired -- done
+7) change 'test' to hit via short_url -- done
+8) destroy ends session if logged in -- done
 

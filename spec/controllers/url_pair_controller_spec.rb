@@ -53,12 +53,14 @@ describe UrlPairsController do
 
   describe "PUT 'update'" do
 		before(:each) do
-
+			@u = Fabricate(:user)
+			sign_in @u
+			@uid  = @u.id
+			@url_pair = Fabricate(:url_pair)		
+			@url_pair.save
 		end
 		it "updates url_pair" do
-			@url_pair = Fabricate(:url_pair)		
-			put :update, :id => @url_pair.id.to_s, :url_pair => { :long_url => 'updated' }
-			@url_pair.save
+			put :update, :id => @url_pair.id.to_s, :url_pair => { :long_url => 'updated' }	
 			@url_pair.reload.long_url.should == 'updated'
 		end
   end
@@ -73,14 +75,33 @@ describe UrlPairsController do
 	end
   end
 
-#describe "url_pair doesn't exist" do
-#	before do
-#		get :show, :url_pair => 'none'
-#	end
-#		it { should_not assign_to :url_pair }
-#		it { should_not render_template :show }
-#		it { should respond_with :not_found }
-#		it { should respond_with_content_type :html }
-#	end
+describe "url_pair doesn't exist" do
+	before do
+		get :show, :url_pair => 'none'
+	end
+		it { should_not assign_to :url_pair }
+		it { should_not render_template :show }
+		it { should respond_with :not_found }
+		it { should respond_with_content_type :html }
+	end
+
+    describe "GET 'list all'" do
+		@user = Fabricate(:user)
+		@up = Fabricate(:url_pair, :user_id => @user.id)		
+		@url_pairs = UrlPair.find(:all)
+		it "returns http success" do	
+			get 'list_all'
+			response.should be_success
+		end
+  end
   
+    describe "GET 'graph'" do
+		@user = Fabricate(:user)
+		@up = Fabricate(:url_pair, :user_id => @user.id)		
+		@url_pairs = UrlPair.find(:all)
+		it "returns http success" do	
+			get 'graph'
+			response.should be_success
+		end
+  end
 end

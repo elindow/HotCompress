@@ -1,13 +1,7 @@
 %h3 Listing of All Url Pairs by Number of Hits
 %br
-= #render 'form1'
+= render 'form1'
 
-- if @guest_user
-	Logged in as guest, id=#{@guest_user.id}
-	=  #link_to 'Login', new_user_session_path
-- else
-	Logged in as #{current_user.email}, id=#{current_user.id}
-	= #link_to 'End Session', destroy_user_session_path, :confirm => "Are you sure?", :method => :delete
 ="-  Total URL Pair Count: #{UrlPair.count}"
 
 %table
@@ -23,6 +17,6 @@
 			%td= url_pair.user.name
 			%td= url_pair.hit_count
 %br			
-= #link_to "Back", url_pairs_path
+= link_to "Back", url_pairs_path, :class => 'btn btn-mini'
 
 	

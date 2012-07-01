@@ -1,3 +1,38 @@
 ﻿@import "bootstrap";
-body { padding-top: 60px; }
+body { padding-top: 60px;
+		}
 @import "bootstrap-responsive";
+
+.btn-custom {
+  background-color: hsl(85, 98%, 57%) !important;
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#a7fc2f", endColorstr="#a3fc25");
+  background-image: -khtml-gradient(linear, left top, left bottom, from(#a7fc2f), to(#a3fc25));
+  background-image: -moz-linear-gradient(top, #a7fc2f, #a3fc25);
+  background-image: -ms-linear-gradient(top, #a7fc2f, #a3fc25);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #a7fc2f), color-stop(100%, #a3fc25));
+  background-image: -webkit-linear-gradient(top, #a7fc2f, #a3fc25);
+  background-image: -o-linear-gradient(top, #a7fc2f, #a3fc25);
+  background-image: linear-gradient(#a7fc2f, #a3fc25);
+  border-color: #a3fc25 #a3fc25 hsl(85, 98%, 56.5%);
+  color: #333 !important;
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.03);
+  -webkit-font-smoothing: antialiased;
+}
+
+.btn-custom1 {
+  background-color: hsl(85, 100%, 82%) !important;
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#eefed6", endColorstr="#99ff0a");
+  background-image: -khtml-gradient(linear, left top, left bottom, from(#eefed6), to(#99ff0a));
+  background-image: -moz-linear-gradient(top, #eefed6, #99ff0a);
+  background-image: -ms-linear-gradient(top, #eefed6, #99ff0a);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #eefed6), color-stop(100%, #99ff0a));
+  background-image: -webkit-linear-gradient(top, #eefed6, #99ff0a);
+  background-image: -o-linear-gradient(top, #eefed6, #99ff0a);
+  background-image: linear-gradient(#eefed6, #99ff0a);
+  border-color: #99ff0a #99ff0a hsl(85, 100%, 42%);
+  color: #333 !important;
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.66);
+  -webkit-font-smoothing: antialiased;
+}
