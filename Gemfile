@@ -58,8 +58,9 @@ group :test do
 	gem "database_cleaner"	#remove changes from database
 	gem "faker"					#creates fake names, email addresses, etc.
 	gem "capybara"        #integration test
+	gem "capybara-firebug"        #integration test
 	gem "spork"
-	gem "selenium-webdriver"
 	gem 'hirb'
+  gem "debugger"
 end
 
