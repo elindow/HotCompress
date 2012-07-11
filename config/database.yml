@@ -5,9 +5,7 @@
 #   gem 'sqlite3'
 common: &common
   adapter: postgresql
-  username: postgres
-  password: rubyfordev
-  database: 
+  database:
 
 development:
   <<: *common
