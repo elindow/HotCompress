@@ -49,7 +49,7 @@
 	
 	def create_guest_user
 		puts "attempting to create guest user"
-		u = User.create(:name => "guest", :email => "guest@e.com")
+		u = User.create(:name => "guest", :email => "guest@e.com", password: "Gibberish")
 		#u = User.create(:name => "guest", :email => "guest_#{Time.now.to_i}#{rand(99)}@example.com")
 		u.skip_confirmation!
 		u.save(:validate => false)
