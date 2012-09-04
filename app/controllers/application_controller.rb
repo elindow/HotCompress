@@ -28,7 +28,7 @@
 	def guest_user
 		guest_user = User.find_by_email("guest@e.com")
 		if ( guest_user.nil? )
-			create_guest_user
+			guest_user = create_guest_user
 		end
 		guest_user
 		#User.find(session[:guest_user_id].nil? ? session[:guest_user_id] = create_guest_user.id : session[:guest_user_id])
@@ -52,7 +52,7 @@
 		u = User.create(:name => "guest", :email => "guest@e.com", password: "Gibberish")
 		#u = User.create(:name => "guest", :email => "guest_#{Time.now.to_i}#{rand(99)}@example.com")
 		u.skip_confirmation!
-		u.save(:validate => false)
+		#u.save(:validate => false) #dangerous, don't use
 		u
 	end
 	

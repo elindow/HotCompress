@@ -3,6 +3,10 @@ body { padding-top: 60px;
 		}
 @import "bootstrap-responsive";
 
+.navbar {
+  color: #00ff00;
+}
+
 .btn-custom {
   background-color: hsl(85, 98%, 57%) !important;
   background-repeat: repeat-x;
